@@ -166,7 +166,8 @@ const speakButton = document.getElementById('speakButton');
 const stopButton = document.getElementById('stopButton');
 const classSelect = document.getElementById('standard-select');
 const recordButton = document.getElementById('recordButton');
-const changeWordButton = document.getElementById('changeWordButton'); // Nút đổi từ
+const changeWordButton = document.getElementById('changeWordButton');
+const changePWordButton = document.getElementById('changePWordButton');
 const resultDiv = document.getElementById('result');
 const wordToPronounceElement = document.getElementById('wordToPronounce');
 const imgElement = document.getElementById('img_topronounce');
@@ -333,18 +334,47 @@ changeWordButton.addEventListener('click', () => {
     // Xóa kết quả cũ
     resultDiv.innerHTML = '';
 });
+changePWordButton.addEventListener('click', () => {
+    if (wordList.length == 0)
+    {
+        showCustomAlert();
+        return;
+    }
+    // Ví dụ gọi hàm để lấy từ tiếp theo
+    getPWord();
+    getPImg();
+    // Cập nhật nội dung của thẻ h2
+    wordToPronounceElement.innerText = wordToPronounce;
+
+    // Cập nhật lại mảng wordsToPronounce
+    wordsToPronounce = wordToPronounce.toLowerCase().split(' ');
+
+    // Xóa kết quả cũ
+    resultDiv.innerHTML = '';
+});
 
 let currentIndex = 0;
 let currentIndex_img = 0;
 
 function getNextImg() {
-    imgElement.src = imgList[currentIndex_img];
-    currentIndex_img = (currentIndex_img + 1) % imgList.length; // Khi đến hết danh sách, quay lại từ đầu
+    imgElement.src = imgList[currentIndex];
+    currentIndex_img = (currentIndex + 1) % imgList.length; // Khi đến hết danh sách, quay lại từ đầu
 }
 
 function getNextWord() {
     wordToPronounce = wordList[currentIndex];
     currentIndex = (currentIndex + 1) % wordList.length; // Khi đến hết danh sách, quay lại từ đầu
+}
+function getPWord() {
+    // Giảm currentIndex và đảm bảo quay lại từ cuối danh sách nếu currentIndex < 0
+    currentIndex = (currentIndex - 1 + wordList.length) % wordList.length;
+    wordToPronounce = wordList[currentIndex];
+}
+
+function getPImg() {
+    // Giảm currentIndex_img và đảm bảo quay lại từ cuối danh sách nếu currentIndex_img < 0
+    currentIndex_img = (currentIndex - 1 + imgList.length) % imgList.length;
+    imgElement.src = imgList[currentIndex];
 }
 speakButton.addEventListener('click', () => {
     if (wordToPronounce) {
