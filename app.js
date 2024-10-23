@@ -34,7 +34,7 @@ let image12 = [];
 let imageielst = [];
 let isDataLoaded = false; // Thêm cờ đánh dấu khi dữ liệu được tải
 // Hàm lấy dữ liệu từ Google Sheet CSV
-fetch(url)
+/*fetch(url)
     .then(response => response.text())
     .then(csvData => {
         const rows = csvData.split('\n').slice(1); // Bỏ dòng tiêu đề
@@ -61,7 +61,106 @@ fetch(url)
     })
     .catch(error => {
         console.error('Error fetching data:', error);
+    });*/
+fetch(url)
+    .then(response => response.text())
+    .then(csvData => {
+        const rows = csvData.split('\n').slice(1); // Bỏ dòng tiêu đề
+
+        // Duyệt qua từng hàng của CSV
+        rows.forEach(row => {
+            const columns = row.split(',');
+
+            // Chỉ thêm phần tử vào mảng nếu nó không rỗng sau khi xóa các dấu ngoặc và khoảng trắng
+            if (columns.length >= 5) { // Kiểm tra đủ số lượng cột
+                let columnValue;
+
+                columnValue = columns[0].replace(/['"]/g, '').trim();
+                if (columnValue) class1.push(columnValue); // Chỉ thêm nếu không rỗng
+
+                columnValue = columns[1].replace(/['"]/g, '').trim();
+                if (columnValue) image1.push(columnValue);
+
+                columnValue = columns[2].replace(/['"]/g, '').trim();
+                if (columnValue) class2.push(columnValue);
+
+                columnValue = columns[3].replace(/['"]/g, '').trim();
+                if (columnValue) image2.push(columnValue);
+
+                columnValue = columns[4].replace(/['"]/g, '').trim();
+                if (columnValue) class3.push(columnValue);
+
+                columnValue = columns[5].replace(/['"]/g, '').trim();
+                if (columnValue) image3.push(columnValue);
+
+                columnValue = columns[6].replace(/['"]/g, '').trim();
+                if (columnValue) class4.push(columnValue);
+
+                columnValue = columns[7].replace(/['"]/g, '').trim();
+                if (columnValue) image4.push(columnValue);
+
+                columnValue = columns[8].replace(/['"]/g, '').trim();
+                if (columnValue) class5.push(columnValue);
+
+                columnValue = columns[9].replace(/['"]/g, '').trim();
+                if (columnValue) image5.push(columnValue);
+
+                columnValue = columns[10].replace(/['"]/g, '').trim();
+                if (columnValue) class6.push(columnValue);
+
+                columnValue = columns[11].replace(/['"]/g, '').trim();
+                if (columnValue) image6.push(columnValue);
+
+                columnValue = columns[12].replace(/['"]/g, '').trim();
+                if (columnValue) class7.push(columnValue);
+
+                columnValue = columns[13].replace(/['"]/g, '').trim();
+                if (columnValue) image7.push(columnValue);
+
+                columnValue = columns[14].replace(/['"]/g, '').trim();
+                if (columnValue) class8.push(columnValue);
+
+                columnValue = columns[15].replace(/['"]/g, '').trim();
+                if (columnValue) image8.push(columnValue);
+
+                columnValue = columns[16].replace(/['"]/g, '').trim();
+                if (columnValue) class9.push(columnValue);
+
+                columnValue = columns[17].replace(/['"]/g, '').trim();
+                if (columnValue) image9.push(columnValue);
+
+                columnValue = columns[18].replace(/['"]/g, '').trim();
+                if (columnValue) class10.push(columnValue);
+
+                columnValue = columns[19].replace(/['"]/g, '').trim();
+                if (columnValue) image10.push(columnValue);
+
+                columnValue = columns[20].replace(/['"]/g, '').trim();
+                if (columnValue) class11.push(columnValue);
+
+                columnValue = columns[21].replace(/['"]/g, '').trim();
+                if (columnValue) image11.push(columnValue);
+
+                columnValue = columns[22].replace(/['"]/g, '').trim();
+                if (columnValue) class12.push(columnValue);
+
+                columnValue = columns[23].replace(/['"]/g, '').trim();
+                if (columnValue) image12.push(columnValue);
+
+                columnValue = columns[24].replace(/['"]/g, '').trim();
+                if (columnValue) classielst.push(columnValue);
+
+                columnValue = columns[25].replace(/['"]/g, '').trim();
+                if (columnValue) imageielst.push(columnValue);
+            }
+        });
+
+        isDataLoaded = true; // Đặt cờ khi dữ liệu được tải
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
     });
+
 
 const speakButton = document.getElementById('speakButton');
 const stopButton = document.getElementById('stopButton');
