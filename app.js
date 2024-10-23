@@ -160,6 +160,22 @@ fetch(url)
     .catch(error => {
         console.error('Error fetching data:', error);
     });
+
+const speakButton = document.getElementById('speakButton');
+const stopButton = document.getElementById('stopButton');
+const classSelect = document.getElementById('standard-select');
+const recordButton = document.getElementById('recordButton');
+const changeWordButton = document.getElementById('changeWordButton');
+const changePWordButton = document.getElementById('changePWordButton');
+const resultDiv = document.getElementById('result');
+const wordToPronounceElement = document.getElementById('wordToPronounce');
+const imgElement = document.getElementById('img_topronounce');
+let message = 'Duongcheck!';
+let wordToPronounce = wordToPronounceElement.innerText;
+// Mảng các từ đã lưu sẵn (sửa tay)
+let wordList = [];
+let imgList = [];
+
 checklist();
 // Start point
 function checklist(){
@@ -239,20 +255,6 @@ if (!isDataLoaded) { // Kiểm tra xem dữ liệu đã tải chưa
 }
 // End of point
 
-const speakButton = document.getElementById('speakButton');
-const stopButton = document.getElementById('stopButton');
-const classSelect = document.getElementById('standard-select');
-const recordButton = document.getElementById('recordButton');
-const changeWordButton = document.getElementById('changeWordButton');
-const changePWordButton = document.getElementById('changePWordButton');
-const resultDiv = document.getElementById('result');
-const wordToPronounceElement = document.getElementById('wordToPronounce');
-const imgElement = document.getElementById('img_topronounce');
-let message = 'Duongcheck!';
-let wordToPronounce = wordToPronounceElement.innerText;
-// Mảng các từ đã lưu sẵn (sửa tay)
-let wordList = [];
-let imgList = [];
 classSelect.addEventListener('change', (event) => {
         if (!isDataLoaded) { // Kiểm tra xem dữ liệu đã tải chưa
         //console.log("Dữ liệu chưa được tải!");
