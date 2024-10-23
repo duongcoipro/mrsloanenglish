@@ -162,6 +162,7 @@ fetch(url)
     });
 
 // Start point
+function checklist(){
 if (!isDataLoaded) { // Kiểm tra xem dữ liệu đã tải chưa
         //console.log("Dữ liệu chưa được tải!");
         return;
@@ -235,6 +236,7 @@ if (!isDataLoaded) { // Kiểm tra xem dữ liệu đã tải chưa
         wordToPronounceElement.innerText = '';  // Nếu không có từ, để trống
         imgElement.src='';
     }
+}
 // End of point
 
 const speakButton = document.getElementById('speakButton');
