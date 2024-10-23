@@ -161,6 +161,81 @@ fetch(url)
         console.error('Error fetching data:', error);
     });
 
+// Start point
+if (!isDataLoaded) { // Kiểm tra xem dữ liệu đã tải chưa
+        //console.log("Dữ liệu chưa được tải!");
+        return;
+    }
+    const selectedClass = event.target.value;
+
+    // Đặt màu nền tùy theo giá trị đã chọn
+    switch (selectedClass) {
+        case '1':  // Class 1
+            wordList= class1;
+            imgList= image1;
+            break;
+        case '2':  // Class 2
+            wordList= class2;
+            imgList= image2;
+            break;
+        case '3':  // Class 3
+            wordList= class3;
+            imgList= image3;
+            break;
+        case '4':  // Class 4
+            wordList= class4;
+            imgList= image4;
+            break;
+        case '5':  // Class 5
+            wordList= class5;
+            imgList= image5;
+            break;
+        case '6':  // Class 5
+            wordList= class6;
+            imgList= image6;
+            break;
+        case '7':  // Class 5
+            wordList= class7;
+            imgList= image7;
+            break;
+        case '8':  // Class 5
+            wordList= class8;
+            imgList= image8;
+            break;
+        case '9':  // Class 5
+            wordList= class9;
+            imgList= image9;
+            break;
+        case '10':  // Class 5
+            wordList= class10;
+            imgList= image10;
+            break;
+        case '11':  // Class 5
+            wordList= class11;
+            imgList= image11;
+            break;
+        case '12':  // Class 5
+            wordList= class12;
+            imgList= image12;
+            break;
+        case 'ielst':  // Class 5
+            wordList= classielst;
+            imgList= imageielst;
+            break;
+        default:   // Mặc định không đổi màu
+            wordList= [];
+    }
+     if (wordList.length > 0) {
+        wordToPronounce = wordList[0];  // Lấy từ đầu tiên của mảng mới
+        imgElement.src= imgList[0];
+        wordToPronounceElement.innerText = wordToPronounce;  // Cập nhật hiển thị
+        wordsToPronounce = wordToPronounce.toLowerCase().split(' ');  // Cập nhật mảng từ cần phát âm
+        resultDiv.innerHTML = '';  // Xóa kết quả cũ nếu có
+    } else {
+        wordToPronounceElement.innerText = '';  // Nếu không có từ, để trống
+        imgElement.src='';
+    }
+// End of point
 
 const speakButton = document.getElementById('speakButton');
 const stopButton = document.getElementById('stopButton');
