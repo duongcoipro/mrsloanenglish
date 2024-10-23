@@ -357,13 +357,13 @@ let currentIndex = 0;
 let currentIndex_img = 0;
 
 function getNextImg() {
-    imgElement.src = imgList[currentIndex];
     currentIndex_img = (currentIndex + 1) % imgList.length; // Khi đến hết danh sách, quay lại từ đầu
+    imgElement.src = imgList[currentIndex];
 }
 
 function getNextWord() {
-    wordToPronounce = wordList[currentIndex];
     currentIndex = (currentIndex + 1) % wordList.length; // Khi đến hết danh sách, quay lại từ đầu
+    wordToPronounce = wordList[currentIndex];
 }
 function getPWord() {
     // Giảm currentIndex và đảm bảo quay lại từ cuối danh sách nếu currentIndex < 0
